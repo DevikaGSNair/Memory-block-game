@@ -1,19 +1,49 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-    margin: 0;
-    /* adding background interface */
-    background: url("https://wallpaperaccess.com/full/2641048.gif") no-repeat center;
-    background-size: cover;
+    background-image: url('./images/background-image.jpg'); /* Use relative path to the image */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
 }
 
-.game {
+h1 {
+    font-family: 'Russo One', sans-serif;
+    font-weight: bold;
+    color: #050605;
+    font-size: 60px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+}
+
+.level-selection {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #09090c;
+    color: white;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #5a598a;
+    transform: scale(1.05);
+}
+
+#game-board {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
     gap: 10px;
+    margin-top: 20px;
 }
 
 .block {
@@ -26,27 +56,49 @@ body {
     align-items: center;
     cursor: pointer;
     transition: transform 0.3s;
-    position: relative;
 }
 
 .block:hover {
-    transform: scale(1.1); 
-    background-color: #5a598a;
+    transform: scale(1.1);
 }
 
 .block img {
-    display: none;
+    display: none; /* Hidden by default */
     width: 100%;
     height: 100%;
     border-radius: 10px;
 }
 
 .block.flipped img {
-    display: block;
+    display: block; /* Show image when flipped */
 }
 
- 
-/* Pop-up styles */
+/* Grid color styles */
+.easy .block:nth-child(3n+1) {
+    background-color: rgb(198, 107, 42);
+}
+
+.easy .block:nth-child(3n+2) {
+    background-color: rgb(13, 143, 186);
+}
+
+.easy .block:nth-child(3n+3) {
+    background-color: rgb(179, 33, 121);
+}
+
+.medium .block:nth-child(4n+1) {
+    background-color: rgb(198, 107, 42);
+}
+
+.medium .block:nth-child(4n+2) {
+    background-color: rgb(13, 143, 186);
+}
+
+.medium .block:nth-child(4n+3) {
+    background-color: rgb(179, 33, 121);
+}
+
+/* Congratulations popup */
 #congratulation-popup {
     position: fixed;
     top: 50%;
@@ -60,31 +112,17 @@ body {
     text-align: center;
 }
 
-button {
+/* Music controls */
+.music-controls {
+    margin-top: 30px;
+}
+
+#toggle-music {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 20px;
-}
-
-#reset {
-    background-color: #47426d;
+    background-color: #0d0c11;
     color: white;
-    font-size: 16px;
-    padding: 10px 20px;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    margin-top: 15px;
-}
-
-#reset:hover {
-    background-color: #5a598a;
-    transform: scale(1.05);
-}
-
-#reset:active {
-    background-color: #3e3c5f;
-
 }
